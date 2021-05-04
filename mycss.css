@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background-color:bisque;
+    font-size:medium;
+    color:black;
+}
+
+h1 {
+    text-align: center;
+    padding: 5%;
+    font-size:2.5rem;
+}
+
+h4 {
+    
+    text-shadow:2px 2px white;
+}
+
+.container {
+    max-width:1200px;
+    font-size: medium;
+    margin:0 auto;
+    text-align:center;
+    }
+
+    .projects ul{
+        background:darkgoldenrod;
+        padding:50px 0;
+    }
+    .projects ul li {
+        list-style-type:none;
+        position:relative;
+        width:50px;
+        border-style: dashed;
+        border-color:white;
+        margin:0 auto;
+        padding-top:50px;
+        padding-bottom:50px;
+        background:black;
+        border-bottom: none;
+        border-top: none;
+    }
+
+    .projects ul li::after {
+        content:'';
+        position:absolute;
+        left:50%;
+        bottom:0;
+        transform: translateX(-50%);
+        width:20px;
+        height:30px;
+        background:darkgoldenrod;
+    }
+
+    .projects ul li div {
+        position:relative;
+        bottom:0;
+        width: 400px;
+        padding:15px;
+        background:bisque;
+        border-radius: 5%;
+        }
+
+    .projects ul li div::before {
+        content:'';
+        position: absolute;
+        bottom:7px;
+        width:0;
+        height:0;
+        border-style:solid;
+    }
+
+    .projects ul li:nth-child(odd) div {
+        left:60px;
+    }
+    .projects ul li:nth-child(odd) div::before {
+        left:-15px;
+        border-width: 8px 16px 8px 0;
+        border-color:transparent bisque transparent transparent;
+     }
+     .projects ul li:nth-child(even) div {
+        left:-418px;
+    }
+    .projects ul li:nth-child(even) div::before {
+        right:-15px;
+        border-width: 8px 0 8px 16px;
+        border-color:transparent transparent transparent bisque;
+     }
+
+/*Effects
+-----------------*/
+.projects ul li::after {
+    transition: background .5s ease-in-out;
+}
+
+.projects ul li.in-view::after {
+    background:darkgoldenrod;
+}
+
+.projects ul li div {
+    visibility:hidden;
+    opacity:0;
+    transition: all .5s ease-in-out;
+}
+
+.projects ul li:nth-child(odd) div {
+    transform: translate3d(200px,0,0);
+}
+
+.projects ul li:nth-child(even) div {
+    transform: translate3d(-200px,0,0);
+}
+
+.projects ul li.in-view div {
+    transform: none;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+/* media-----------------*/
+
+@media screen and (max-width:600px) {
+    .projects ul li{
+        margin-left:20px;
+    }
+    .projects ul li div {
+        width:calc(100vw - 91px);
+    }
+    .projects ul li:nth-child(even) div {
+        left:45px;
+    }
+    .projects ul li:nth-child(even) div::before {
+        left:-15px;
+        border-width: 8px 16px 8px 0;
+        border-color: transparent bisque transparent transparent;
+    }
+}
